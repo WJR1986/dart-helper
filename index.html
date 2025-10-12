@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DART Casenote Builder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container-fluid {
+            max-width: 1600px;
+        }
+        .sidebar {
+            height: calc(100vh - 2rem);
+            position: sticky;
+            top: 1rem;
+        }
+        .nav-pills .nav-link {
+            border-radius: 0.375rem;
+        }
+        .nav-pills .nav-link.active {
+            background-color: #0d6efd;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: #e7f1ff;
+            color: #0c63e4;
+        }
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .list-group-item:hover {
+            background-color: #f0f0f0;
+        }
+        .list-group-item-text {
+            flex-grow: 1;
+        }
+        .copy-icon {
+            cursor: pointer;
+            margin-left: 1rem;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+        .copy-icon:hover {
+            opacity: 1;
+        }
+        #notes-output {
+            white-space: pre-wrap;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            min-height: 250px;
+            height: calc(100vh - 200px);
+        }
+        .copy-btn {
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid mt-3">
+        <div class="text-center mb-4">
+            <h1 class="display-5">DART Casenote Builder</h1>
+            <p class="lead">Select an area, click on sentences to build your case notes, then copy them to your clipboard.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card sidebar">
+                    <div class="card-body">
+                         <h5 class="card-title">Star Areas</h5>
+                        <ul class="nav nav-pills flex-column" id="area-nav">
+                            </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="accordion" id="topicsAccordion">
+                    </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card sidebar">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Generated Casenotes</h5>
+                        <div id="notes-output" class="mb-3 bg-light flex-grow-1"></div>
+                        <div class="d-flex justify-content-between">
+                             <button id="copy-btn" class="btn btn-primary copy-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>
+                                Copy All Notes
+                            </button>
+                             <button id="clear-btn" class="btn btn-outline-danger">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="copy-toast" class="toast align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 p-3" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                Note copied to clipboard!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <script>
+    // ===================================================================================
+    // JAVASCRIPT LOGIC - UPDATED TO LOAD EXTERNAL JSON FILES
+    // ===================================================================================
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- CONFIGURATION: Map Area Names to JSON file paths ---
+        const areaConfig = {
+            "Drug Use": "drug-use.json",
+            "Alcohol Use": "alcohol-use.json",
+            "Family & Relationships": "family-relationships.json",
+            "Accommodation": "accommodation.json",
+            "Physical Health": "physical-health.json",
+            "Emotional Health": "emotional-health.json",
+            "Meaningful Use of Time": "meaningful-use-of-time.json",
+            "Offending": "offending.json",
+            "Money": "money.json",
+            "Community": "community.json"
+        };
+        
+        // --- CACHE: To store loaded JSON data and avoid re-fetching ---
+        const loadedDataCache = {};
+
+        // --- DOM ELEMENTS ---
+        const areaNav = document.getElementById('area-nav');
+        const topicsAccordion = document.getElementById('topicsAccordion');
+        const notesOutput = document.getElementById('notes-output');
+        const copyBtn = document.getElementById('copy-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const toastEl = document.getElementById('copy-toast');
+        const copyToast = new bootstrap.Toast(toastEl);
+
+        // --- CORE FUNCTIONS ---
+
+        // Fetches JSON data for a specific area from a file
+        async function loadDataForArea(area) {
+            if (loadedDataCache[area]) {
+                return loadedDataCache[area]; // Return from cache if already loaded
+            }
+            
+            const fileName = areaConfig[area];
+            if (!fileName) {
+                console.error(`No JSON file configured for area: ${area}`);
+                return null;
+            }
+
+            try {
+                const response = await fetch(fileName);
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+                const data = await response.json();
+                loadedDataCache[area] = data; // Store in cache
+                return data;
+            } catch (error) {
+                console.error(`Error fetching or parsing ${fileName}:`, error);
+                topicsAccordion.innerHTML = `<div class="alert alert-danger">Error loading data for ${area}. Please ensure the file '${fileName}' exists and is in the same folder as this HTML file.</div>`;
+                return null;
+            }
+        }
+
+        // Renders the topics and sentences for the selected area
+        function renderTopics(area, topics) {
+            topicsAccordion.innerHTML = '';
+            if (!topics) return;
+
+            Object.keys(topics).forEach((topic, topicIndex) => {
+                const topicId = `topic-${area.replace(/\s+/g, '-')}-${topicIndex}`;
+                const sentences = topics[topic];
+                let sentencesHtml = `<ul class="list-group list-group-flush">`;
+                sentences.forEach(sentence => {
+                    sentencesHtml += `
+                        <li class="list-group-item" onclick="addNote(this)">
+                            <span class="list-group-item-text">${sentence}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard copy-icon" viewBox="0 0 16 16" onclick="copyIndividualNote(event, this)">
+                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                            </svg>
+                        </li>`;
+                });
+                sentencesHtml += `</ul>`;
+
+                const topicHtml = `
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-${topicId}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${topicId}" aria-expanded="false" aria-controls="collapse-${topicId}">
+                                ${topic}
+                            </button>
+                        </h2>
+                        <div id="collapse-${topicId}" class="accordion-collapse collapse" aria-labelledby="heading-${topicId}">
+                            <div class="accordion-body p-0">${sentencesHtml}</div>
+                        </div>
+                    </div>`;
+                topicsAccordion.innerHTML += topicHtml;
+            });
+        }
+
+        // --- GLOBAL HELPER FUNCTIONS ---
+
+        function showToast(message) {
+            toastEl.querySelector('.toast-body').innerText = message;
+            copyToast.show();
+        }
+        
+        function copyText(text, message) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => showToast(message));
+            } else {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast(message);
+                } finally {
+                    document.body.removeChild(textArea);
+                }
+            }
+        }
+
+        window.addNote = function(element) {
+            const text = element.querySelector('.list-group-item-text').innerText;
+            if (notesOutput.innerHTML.trim() === '') {
+                notesOutput.innerHTML = text;
+            } else {
+                notesOutput.innerHTML += '\n\n' + text;
+            }
+            element.style.backgroundColor = '#d1e7dd';
+            setTimeout(() => { element.style.backgroundColor = ''; }, 300);
+        }
+
+        window.copyIndividualNote = function(event, element) {
+            event.stopPropagation();
+            const textToCopy = element.parentElement.querySelector('.list-group-item-text').innerText;
+            copyText(textToCopy, 'Single note copied!');
+        }
+
+        // --- INITIALIZATION ---
+        
+        async function initialize() {
+            // Populate the area navigation
+            Object.keys(areaConfig).forEach((area, index) => {
+                const navLink = document.createElement('li');
+                navLink.className = 'nav-item';
+                navLink.innerHTML = `<a class="nav-link ${index === 0 ? 'active' : ''}" href="#" data-area="${area}">${area}</a>`;
+                areaNav.appendChild(navLink);
+
+                navLink.querySelector('a').addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    document.querySelectorAll('#area-nav .nav-link').forEach(link => link.classList.remove('active'));
+                    e.target.classList.add('active');
+                    const selectedArea = e.target.getAttribute('data-area');
+                    const data = await loadDataForArea(selectedArea);
+                    renderTopics(selectedArea, data);
+                });
+            });
+
+            // Initial load of the first area's data
+            const firstArea = Object.keys(areaConfig)[0];
+            const initialData = await loadDataForArea(firstArea);
+            renderTopics(firstArea, initialData);
+        }
+
+        // Event listeners for main buttons
+        copyBtn.addEventListener('click', () => {
+            const textToCopy = notesOutput.innerText;
+            copyText(textToCopy, 'All notes copied!');
+        });
+
+        clearBtn.addEventListener('click', () => {
+            notesOutput.innerHTML = '';
+        });
+
+        // Run the initialization
+        initialize();
+    });
+    </script>
+</body>
+</html>
