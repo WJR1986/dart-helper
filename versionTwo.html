@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- 
+  1. Added data-bs-theme="dark" to enable dark mode
+-->
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
+        /* 2. Updated hard-coded colors to use Bootstrap CSS variables for theme compatibility */
         body {
-            background-color: #f8f9fa;
+            /* Use Bootstrap's variable for the body background */
+            background-color: var(--bs-body-bg);
         }
         .container-fluid {
             max-width: 1800px;
@@ -35,8 +40,9 @@
         }
         #notes-output {
             white-space: pre-wrap;
-            background-color: #fff;
-            border: 1px solid #dee2e6;
+            /* Use theme variables for background and border */
+            background-color: var(--bs-body-secondary);
+            border: 1px solid var(--bs-border-color);
             padding: 1rem;
             border-radius: 0.375rem;
             min-height: 300px;
@@ -66,7 +72,8 @@
             color: #005a9c; /* A distinct colour */
             border: 1px solid #005a9c;
             margin-bottom: 5px;
-            background-color: #e6f3ff;
+            /* Using a theme-aware background */
+            background-color: var(--bs-tertiary-bg);
         }
         .nav-link.care-plan-btn.active {
             background-color: #005a9c;
@@ -78,7 +85,8 @@
              color: #fff;
         }
         .nav-link.star-area-btn {
-            color: #495057;
+            /* Using a theme-aware text color variable */
+            color: var(--bs-secondary-color);
         }
 
     </style>
@@ -131,7 +139,8 @@
                 <div class="card h-100">
                      <div class="card-body sidebar d-flex flex-column notes-container">
                         <h5 class="card-title">Generated Output</h5>
-                        <p class="small text-muted">Add sentences here, then copy the full text into SystmOne.</p>
+                        <!-- 3. Replaced 'text-muted' with 'text-body-secondary' -->
+                        <p class="small text-body-secondary">Add sentences here, then copy the full text into SystmOne.</p>
                         <textarea id="notes-output" class="form-control flex-grow-1 mb-3" placeholder="Your notes will appear here..."></textarea>
                         <div class="d-flex justify-content-between mt-auto">
                              <button id="copy-btn" class="btn btn-primary">
@@ -159,10 +168,11 @@
 
       <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
+      <!-- 4. Replaced 'text-muted' with 'text-body-secondary' for theme-aware text -->
+      <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
 
     </ul>
-    <p class="text-center text-muted">© 2025 Will</p>
+    <p class="text-center text-body-secondary">© 2025 Will</p>
   </footer>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -404,4 +414,3 @@
     </script>
 </body>
 </html>
-
