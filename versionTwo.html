@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DART Casenote Builder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container-fluid {
+            max-width: 1800px;
+        }
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1rem;
+        }
+        .sentence-select {
+            flex-grow: 1;
+            margin-right: 1rem;
+        }
+        .action-icon {
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+            flex-shrink: 0;
+            margin-left: 0.75rem;
+        }
+        .action-icon:hover {
+            opacity: 1;
+        }
+        #notes-output {
+            white-space: pre-wrap;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            min-height: 300px;
+        }
+        
+        /* Sidebar styling for sticky position on desktop */
+        @media (min-width: 992px) {
+            .sidebar {
+                height: calc(100vh - 7rem); /* Adjust 7rem based on your padding/margins */
+                position: sticky;
+                top: 1rem;
+                overflow-y: auto; /* Add scroll to sidebar nav if it gets too long */
+            }
+            .notes-container {
+                 height: 100%;
+            }
+            #notes-output {
+                /* Set a height for the textarea within the sticky container */
+                height: calc(100% - 60px); /* Full height minus button height */
+                overflow-y: auto;
+            }
+        }
+
+        /* Style for the new Care Plan buttons */
+        .nav-link.care-plan-btn {
+            font-weight: bold;
+            color: #005a9c; /* A distinct colour */
+            border: 1px solid #005a9c;
+            margin-bottom: 5px;
+            background-color: #e6f3ff;
+        }
+        .nav-link.care-plan-btn.active {
+            background-color: #005a9c;
+            color: #fff;
+            border-color: #005a9c;
+        }
+        .nav-link.star-area-btn.active {
+             background-color: #6c757d;
+             color: #fff;
+        }
+        .nav-link.star-area-btn {
+            color: #495057;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container-fluid my-4">
+        <div class="text-center mb-4">
+            <h1 class="display-5">DART Casenote & Care Plan Builder</h1>
+            <p class="lead">Build your Care Plan (Goals/Actions) or select a Star Area to write session notes.</p>
+        </div>
+
+        <div class="row">
+            <!-- Left Column: Area Navigation -->
+            <div class="col-lg-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body sidebar">
+                        <h5 class="card-title">1. Build Care Plan (For Portal)</h5>
+                        <ul class="nav nav-pills flex-column" id="care-plan-nav">
+                            <!-- Nav links for Goals and Actions populated by JS -->
+                        </ul>
+                        <hr class="my-3">
+                        <h5 class="card-title">2. Write Session Notes (For SystmOne)</h5>
+                        <ul class="nav nav-pills flex-column" id="area-nav">
+                            <!-- Nav links for Star Areas populated by JS -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Column: Selection Options -->
+            <div class="col-lg-5 mb-4">
+                <div class="accordion" id="topicsAccordion">
+                    <!-- Topics populated by JS -->
+                </div>
+            </div>
+
+            <!-- Right Column: Notes Output -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                     <div class="card-body sidebar d-flex flex-column notes-container">
+                        <h5 class="card-title">Generated Output</h5>
+                        <p class="small text-muted">Add sentences here, then copy the full text into SystmOne.</p>
+                        <textarea id="notes-output" class="form-control flex-grow-1 mb-3" placeholder="Your notes will appear here..."></textarea>
+                        <div class="d-flex justify-content-between mt-auto">
+                             <button id="copy-btn" class="btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>
+                                Copy All
+                            </button>
+                             <button id="clear-btn" class="btn btn-outline-danger">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast for copy confirmation -->
+    <div id="copy-toast" class="toast align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 p-3" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                Note copied to clipboard!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // --- CONFIGURATION: Map Area Names to JSON file paths ---
+        
+        const carePlanConfig = {
+            "Goals (Step 1)": "_Care_Plan_Goals.json",
+            "Actions (Step 2)": "_Care_Plan_Actions.json"
+        };
+        
+        const starAreaConfig = {
+            "Drug Use": "drug-use.json",
+            "Alcohol Use": "alcohol-use.json",
+            "Emotional Health": "emotional-health.json",
+            "Physical Health": "physical-health.json",
+            "Family & Relationships": "family-relationships.json",
+            "Meaningful Use of Time": "meaningful-use-of-time.json",
+            "Accommodation": "accommodation.json",
+            "Money": "money.json",
+            "Offending": "offending.json",
+            "Community": "community.json"
+        };
+        
+        // Combine all configs for data loading
+        const allConfig = { ...carePlanConfig, ...starAreaConfig };
+
+        // --- CACHE: To store loaded JSON data ---
+        const loadedDataCache = {};
+
+        // --- DOM ELEMENTS ---
+        const carePlanNav = document.getElementById('care-plan-nav');
+        const areaNav = document.getElementById('area-nav');
+        const topicsAccordion = document.getElementById('topicsAccordion');
+        const notesOutput = document.getElementById('notes-output');
+        const copyBtn = document.getElementById('copy-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const toastEl = document.getElementById('copy-toast');
+        const copyToast = new bootstrap.Toast(toastEl);
+
+        // --- CORE FUNCTIONS ---
+
+        async function loadDataForArea(area) {
+            if (loadedDataCache[area]) return loadedDataCache[area];
+            
+            const fileName = allConfig[area];
+            if (!fileName) {
+                console.error(`No JSON file configured for area: ${area}`);
+                return null;
+            }
+
+            try {
+                // *** FIX: Added './' to the start of the path ***
+                // This makes it a valid relative URL (e.g., ./drug-use.json)
+                // The cache-busting string is fine, but it needs a valid path.
+                const response = await fetch(`./${fileName}?_=${new Date().getTime()}`);
+                if (!response.ok) throw new Error(`Network response was not ok for ${fileName}`);
+                const data = await response.json();
+                loadedDataCache[area] = data;
+                return data;
+            } catch (error) {
+                console.error(`Error fetching or parsing ${fileName}:`, error);
+                topicsAccordion.innerHTML = `<div class="alert alert-danger">Error loading data for ${area}. Ensure the file '${fileName}' exists, is in the same folder, and is a valid JSON file. (Remember to use 'Live Server' in VS Code)</div>`;
+                return null;
+            }
+        }
+
+        function renderTopics(area, topics) {
+            topicsAccordion.innerHTML = '';
+            if (!topics) return;
+
+            Object.keys(topics).forEach((topic, topicIndex) => {
+                // FIX: Sanitize the 'area' string to remove special characters like ( )
+                // This prevents invalid CSS selector errors from Bootstrap
+                const safeArea = area.replace(/[^a-zA-Z0-9 -]/g, "").replace(/\s+/g, '-');
+                const topicId = `topic-${safeArea}-${topicIndex}`;
+                
+                // *** THIS IS THE FIX ***
+                // Get the data for this topic
+                const sentenceData = topics[topic];
+                if (!sentenceData || sentenceData.length === 0) return;
+
+                // Check the structure. Is the first item an array?
+                // If yes, it's our "grouped" format (e.g., _Care_Plan_Goals.json)
+                // If no, it's our "simple" format (e.g., drug-use.json), so we wrap it in an array 
+                // to make it compatible with the loop below.
+                const isGrouped = Array.isArray(sentenceData[0]);
+                const sentenceGroups = isGrouped ? sentenceData : [sentenceData];
+                // *** END OF FIX ***
+
+                let sentencesHtml = `<ul class="list-group list-group-flush">`;
+                
+                // This loop now works for BOTH file types.
+                // - If grouped, it loops through each group and makes a dropdown.
+                // - If simple, it loops through the one item we wrapped it in and makes one dropdown.
+                sentenceGroups.forEach((group, groupIndex) => {
+                    const selectId = `select-${topicId}-${groupIndex}`;
+                    let optionsHtml = '';
+                    
+                    // The 'group' is now the array of sentence options
+                    group.forEach(sentence => {
+                        // Replace ' with a standard apostrophe for consistency
+                        const cleanSentence = sentence.replace(/’/g, "'");
+                        optionsHtml += `<option>${cleanSentence}</option>`;
+                    });
+
+                    sentencesHtml += `
+                        <li class="list-group-item">
+                            <select class="form-select sentence-select" id="${selectId}">
+                                ${optionsHtml}
+                            </select>
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill text-success action-icon" viewBox="0 0 16 16" onclick="addNoteFromSelect('${selectId}')" title="Add to notes">
+                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clipboard action-icon" viewBox="0 0 16 16" onclick="copyIndividualNoteFromSelect('${selectId}')" title="Copy this note">
+                              <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                              <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                            </svg>
+                        </li>`;
+                });
+
+                sentencesHtml += `</ul>`;
+
+                const topicHtml = `
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-${topicId}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${topicId}" aria-expanded="false" aria-controls="collapse-${topicId}">
+                                ${topic}
+                            </button>
+                        </h2>
+                        <div id="collapse-${topicId}" class="accordion-collapse collapse" aria-labelledby="heading-${topicId}">
+                            <div class="accordion-body p-0">${sentencesHtml}</div>
+                        </div>
+                    </div>`;
+                topicsAccordion.innerHTML += topicHtml;
+            });
+        }
+
+        // --- GLOBAL HELPER FUNCTIONS ---
+
+        function showToast(message) {
+            toastEl.querySelector('.toast-body').innerText = message;
+            copyToast.show();
+        }
+        
+        function copyText(text, message) {
+            if (!text) return;
+            // Use execCommand as a fallback for potential iframe/secure context issues
+            try {
+                navigator.clipboard.writeText(text).then(() => showToast(message));
+            } catch (err) {
+                console.warn('Clipboard API failed, falling back to execCommand.', err);
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed'; // Avoid scrolling to bottom
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast(message);
+                } catch (execErr) {
+                    console.error('Fallback execCommand failed.', execErr);
+                    showToast('Copy failed. Please copy manually.');
+                }
+                document.body.removeChild(textArea);
+            }
+        }
+
+        window.addNoteFromSelect = function(selectId) {
+            const selectElement = document.getElementById(selectId);
+            const text = selectElement.value;
+            if (notesOutput.value === '') {
+                notesOutput.value = text;
+            } else {
+                notesOutput.value += '\n\n' + text;
+            }
+        }
+
+        window.copyIndividualNoteFromSelect = function(selectId) {
+            const selectElement = document.getElementById(selectId);
+            const textToCopy = selectElement.value;
+            copyText(textToCopy, 'Single note copied!');
+        }
+        
+        // --- NAVIGATION CLICK HANDLER ---
+        async function handleNavClick(e) {
+            e.preventDefault();
+            // Remove active class from ALL nav links
+            document.querySelectorAll('#area-nav .nav-link, #care-plan-nav .nav-link').forEach(link => link.classList.remove('active'));
+            // Add active class to the clicked one
+            e.target.classList.add('active');
+            
+            const selectedArea = e.target.getAttribute('data-area');
+            const data = await loadDataForArea(selectedArea);
+            renderTopics(selectedArea, data);
+        }
+
+        // --- INITIALIZATION ---
+        
+        async function initialize() {
+            // 1. Populate Care Plan Nav
+            Object.keys(carePlanConfig).forEach((area) => {
+                const navLink = document.createElement('li');
+                navLink.className = 'nav-item';
+                navLink.innerHTML = `<a class="nav-link care-plan-btn" href="#" data-area="${area}">${area}</a>`;
+                carePlanNav.appendChild(navLink);
+                navLink.querySelector('a').addEventListener('click', handleNavClick);
+            });
+
+            // 2. Populate Star Area Nav
+            Object.keys(starAreaConfig).forEach((area) => {
+                const navLink = document.createElement('li');
+                navLink.className = 'nav-item';
+                navLink.innerHTML = `<a class="nav-link star-area-btn" href="#" data-area="${area}">${area}</a>`;
+                areaNav.appendChild(navLink);
+                navLink.querySelector('a').addEventListener('click', handleNavClick);
+            });
+            
+            // 3. Load data for the very first item (Goals)
+            const firstArea = Object.keys(carePlanConfig)[0];
+            document.querySelector('#care-plan-nav .nav-link').classList.add('active'); // Set first link as active
+            const initialData = await loadDataForArea(firstArea);
+            renderTopics(firstArea, initialData);
+        }
+
+        copyBtn.addEventListener('click', () => {
+            const textToCopy = notesOutput.value;
+            copyText(textToCopy, 'All notes copied!');
+        });
+        clearBtn.addEventListener('click', () => {
+            notesOutput.value = '';
+        });
+
+        initialize();
+    });
+    </script>
+</body>
+</html>
+
