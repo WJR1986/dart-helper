@@ -59,9 +59,45 @@
     [
       "Action: To complete work on 'Cocaethylene' to understand the specific, toxic risks of mixing alcohol and cocaine.",
       "Action: To raise awareness of the creation of cocaethylene in the body when mixing cocaine and alcohol."
+    ],
+    [
+      "Action: To complete psychoeducational work on 'Spice' (SCRAs) covering its unpredictable effects and severe health risks.",
+      "Action: To explore the client's use of Spice, focusing on harm reduction and the specific dangers within a prison environment.",
+      "Action: To raise awareness of the potentially life-threatening side effects associated with Synthetic Cannabinoids (Spice)."
+    ],
+    [
+      "Action: To complete psychoeducational work on illicit 'Subutex' (Buprenorphine) use, including risks of injection and overdose when mixed.",
+      "Action: To explore the client's pattern of illicit Subutex use and associated harm reduction strategies (BBVs, overdose).",
+      "Action: To discuss the dangers of diverted Buprenorphine and its interaction with other substances, particularly sedatives."
+    ],
+    [
+      "Action: To complete psychoeducational work on 'Pregabalin/Gabapentin' misuse, focusing on tolerance, dependence, and overdose risks, especially when mixed.",
+      "Action: To explore the client's use of Pregabalin/Gabapentin and the reasons behind it (e.g., self-medicating anxiety, enhancing other drugs).",
+      "Action: To raise awareness of withdrawal symptoms associated with Pregabalin/Gabapentin and the importance of medical support for cessation."
+    ],
+    [
+      "Action: To complete psychoeducational work on 'New Psychoactive Substances (NPS)' highlighting the unknown risks and unpredictable effects.",
+      "Action: To explore the client's experiences with NPS and the dangers of using substances with unknown purity or composition.",
+      "Action: To focus harm reduction strategies specifically on the dangers of NPS within the prison environment."
     ]
   ],
-  "4. Emotional & Cognitive Work": [
+  "4. Motivation & Stages of Change": [
+    [
+      "Action: To explore the client's motivation using scaling questions (Importance/Readiness/Confidence).",
+      "Action: To use decisional balance exercises to explore the pros and cons of substance use and change.",
+      "Action: To identify the client's current Stage of Change and tailor interventions accordingly."
+    ],
+    [
+      "Action: To build motivation for change using Motivational Interviewing techniques (OARS).",
+      "Action: To explore ambivalence about change in a non-confrontational manner.",
+      "Action: To identify and reinforce 'change talk' expressed by the client."
+    ],
+    [
+       "Action: To help the client identify personally meaningful goals that support their motivation for recovery.",
+       "Action: To link current substance use patterns to the client's stated values and future aspirations."
+    ]
+  ],
+  "5. Emotional & Cognitive Work": [
     [
       "Action: To complete work on 'Emotional Health' to learn how to manage emotional triggers.",
       "Action: To develop healthier coping strategies for managing difficult emotions."
@@ -83,7 +119,7 @@
       "Action: To practice consequential thinking to better anticipate and avoid high-risk situations."
     ]
   ],
-  "5. Practical & Pre-Release Actions": [
+  "6. Practical & Pre-Release Actions": [
     [
       "Action: A community referral to be completed to ensure ongoing support from the local drug and alcohol service.",
       "Action: To complete and send a community referral to the client's local treatment provider.",
@@ -102,7 +138,7 @@
       "Action: To explore and implement strategies for improving sleep hygiene."
     ]
   ],
-  "6. Staff Risk & Contingency Notes": [
+  "7. Staff Risk & Contingency Notes": [
     [
       "Risk Note: Client's CNOMIS shows markers for violence. Wing staff to be made aware of times and locations of all appointments. Presentation to be monitored going forward.",
       "Risk Note: Violence marker on CNOMIS noted. All appointments to be communicated to wing staff."
@@ -117,4 +153,3 @@
     ]
   ]
 }
-
