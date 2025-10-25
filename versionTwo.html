@@ -225,16 +225,30 @@
             }
 
             try {
-                // *** GITHUB PAGES FIX ***
-                // Removed the leading './' from the fetch path.
-                const response = await fetch(`${fileName}?_=${new Date().getTime()}`);
-                if (!response.ok) throw new Error(`Network response was not ok for ${fileName}`);
+                // *** GITHUB PAGES PATH FIX v2 ***
+                // Construct the URL relative to the current page's path.
+                // 1. Get the current URL's pathname (e.g., /dart-helper/versionTwo.html)
+                // 2. Find the last '/' to get the directory (e.g., /dart-helper/)
+                // 3. Append the filename (e.g., /dart-helper/_Care_Plan_Goals.json)
+                const currentPath = window.location.pathname;
+                const directoryPath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+                const fileUrl = `${directoryPath}${fileName}?_=${new Date().getTime()}`;
+                
+                // Fetch using the constructed URL
+                const response = await fetch(fileUrl); 
+                // *** END OF FIX ***
+
+                if (!response.ok) throw new Error(`Network response was not ok for ${fileName} at ${fileUrl}`);
                 const data = await response.json();
                 loadedDataCache[area] = data;
                 return data;
             } catch (error) {
                 console.error(`Error fetching or parsing ${fileName}:`, error);
-                topicsAccordion.innerHTML = `<div class="alert alert-danger">Error loading data for ${area}. Ensure the file '${fileName}' exists, is in the same folder, and is a valid JSON file. (Remember to use 'Live Server' in VS Code)</div>`;
+                // Display the attempted URL in the error message for easier debugging
+                const currentPath = window.location.pathname;
+                const directoryPath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+                const attemptedUrl = `${directoryPath}${fileName}`; 
+                topicsAccordion.innerHTML = `<div class="alert alert-danger">Error loading data for ${area}. Attempted to fetch from: ${attemptedUrl}. Ensure the file '${fileName}' exists at this location in your repository and is valid JSON.</div>`;
                 return null;
             }
         }
@@ -249,7 +263,6 @@
                 const safeArea = area.replace(/[^a-zA-Z0-9 -]/g, "").replace(/\s+/g, '-');
                 const topicId = `topic-${safeArea}-${topicIndex}`;
                 
-                // *** THIS IS THE FIX ***
                 // Get the data for this topic
                 const sentenceData = topics[topic];
                 if (!sentenceData || sentenceData.length === 0) return;
@@ -260,20 +273,14 @@
                 // to make it compatible with the loop below.
                 const isGrouped = Array.isArray(sentenceData[0]);
                 const sentenceGroups = isGrouped ? sentenceData : [sentenceData];
-                // *** END OF FIX ***
 
                 let sentencesHtml = `<ul class="list-group list-group-flush">`;
                 
-                // This loop now works for BOTH file types.
-                // - If grouped, it loops through each group and makes a dropdown.
-                // - If simple, it loops through the one item we wrapped it in and makes one dropdown.
                 sentenceGroups.forEach((group, groupIndex) => {
                     const selectId = `select-${topicId}-${groupIndex}`;
                     let optionsHtml = '';
                     
-                    // The 'group' is now the array of sentence options
                     group.forEach(sentence => {
-                        // Replace ' with a standard apostrophe for consistency
                         const cleanSentence = sentence.replace(/’/g, "'");
                         optionsHtml += `<option>${cleanSentence}</option>`;
                     });
