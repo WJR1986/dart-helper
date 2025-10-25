@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<!-- 
-  1. Added data-bs-theme="dark" to enable dark mode
--->
 <html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
@@ -110,36 +107,29 @@
 </div>
 
         <div class="row">
-            <!-- Left Column: Area Navigation -->
             <div class="col-lg-3 mb-4">
                 <div class="card h-100">
                     <div class="card-body sidebar">
                         <h5 class="card-title">1. Build Care Plan (For Portal)</h5>
                         <ul class="nav nav-pills flex-column" id="care-plan-nav">
-                            <!-- Nav links for Goals and Actions populated by JS -->
-                        </ul>
+                            </ul>
                         <hr class="my-3">
                         <h5 class="card-title">2. Write Session Notes (For SystmOne)</h5>
                         <ul class="nav nav-pills flex-column" id="area-nav">
-                            <!-- Nav links for Star Areas populated by JS -->
-                        </ul>
+                            </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Middle Column: Selection Options -->
             <div class="col-lg-5 mb-4">
                 <div class="accordion" id="topicsAccordion">
-                    <!-- Topics populated by JS -->
-                </div>
+                    </div>
             </div>
 
-            <!-- Right Column: Notes Output -->
             <div class="col-lg-4 mb-4">
                 <div class="card h-100">
                      <div class="card-body sidebar d-flex flex-column notes-container">
                         <h5 class="card-title">Generated Output</h5>
-                        <!-- 3. Replaced 'text-muted' with 'text-body-secondary' -->
                         <p class="small text-body-secondary">Add sentences here, then copy the full text into SystmOne.</p>
                         <textarea id="notes-output" class="form-control flex-grow-1 mb-3" placeholder="Your notes will appear here..."></textarea>
                         <div class="d-flex justify-content-between mt-auto">
@@ -155,7 +145,6 @@
         </div>
     </div>
 
-    <!-- Toast for copy confirmation -->
     <div id="copy-toast" class="toast align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 p-3" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body">
@@ -168,7 +157,6 @@
 
       <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <!-- 4. Replaced 'text-muted' with 'text-body-secondary' for theme-aware text -->
       <li class="nav-item"><a href="index.html" class="nav-link px-2 text-body-secondary">Home</a></li>
 
     </ul>
@@ -225,10 +213,10 @@
             }
 
             try {
-                // *** FIX: Added './' to the start of the path ***
-                // This makes it a valid relative URL (e.g., ./drug-use.json)
-                // The cache-busting string is fine, but it needs a valid path.
-                const response = await fetch(`./${fileName}?_=${new Date().getTime()}`);
+                // *** GITHUB PAGES FIX ***
+                // Removed the leading './' from the fetch path.
+                // This is a more robust relative path that should resolve correctly on GitHub Pages.
+                const response = await fetch(`${fileName}?_=${new Date().getTime()}`);
                 if (!response.ok) throw new Error(`Network response was not ok for ${fileName}`);
                 const data = await response.json();
                 loadedDataCache[area] = data;
