@@ -180,8 +180,8 @@
         // --- CONFIGURATION: Map Area Names to JSON file paths ---
         
         const carePlanConfig = {
-            "Goals (Step 1)": "_Care_Plan_Goals.json",
-            "Actions (Step 2)": "_Care_Plan_Actions.json"
+            "Goals (Step 1)": "Care_Plan_Goals.json",
+            "Actions (Step 2)": "Care_Plan_Actions.json"
         };
         
         const starAreaConfig = {
@@ -229,7 +229,7 @@
                 // Construct the URL relative to the current page's path.
                 // 1. Get the current URL's pathname (e.g., /dart-helper/versionTwo.html)
                 // 2. Find the last '/' to get the directory (e.g., /dart-helper/)
-                // 3. Append the filename (e.g., /dart-helper/_Care_Plan_Goals.json)
+                // 3. Append the filename (e.g., /dart-helper/Care_Plan_Goals.json)
                 const currentPath = window.location.pathname;
                 const directoryPath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
                 const fileUrl = `${directoryPath}${fileName}?_=${new Date().getTime()}`;
@@ -268,7 +268,7 @@
                 if (!sentenceData || sentenceData.length === 0) return;
 
                 // Check the structure. Is the first item an array?
-                // If yes, it's our "grouped" format (e.g., _Care_Plan_Goals.json)
+                // If yes, it's our "grouped" format (e.g., Care_Plan_Goals.json)
                 // If no, it's our "simple" format (e.g., drug-use.json), so we wrap it in an array 
                 // to make it compatible with the loop below.
                 const isGrouped = Array.isArray(sentenceData[0]);
