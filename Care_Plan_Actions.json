@@ -1,155 +1,202 @@
 {
-  "1. General Recovery Work": [
+  "1.1 Addiction in the Brain": [
     [
-      "Action: To complete psychoeducational work on 'Addiction in the Brain' to understand its effects on behaviour.",
-      "Action: To explore the concept of addiction as a brain-based disorder.",
-      "Action: To complete an intervention focused on 'Addiction in the Brain'."
-    ],
-    [
-      "Action: To complete work on 'Values & Beliefs' to identify and connect with personal pro-social values.",
-      "Action: To explore the client's core values and beliefs and how they can support recovery.",
-      "Action: To complete an intervention focused on 'Values & Beliefs'."
-    ],
-    [
-      "Action: To complete work on 'Dishonesty & Addiction' to understand its role in active addiction.",
-      "Action: To explore the role of dishonesty within addiction and the importance of honesty in recovery."
-    ],
-    [
-      "Action: To explore the issues around 'Addiction Transfer' and how best to respond.",
-      "Action: To raise awareness of addiction transfer and develop strategies to manage it."
+      "To complete psychoeducational work on 'Addiction in the Brain' to understand its effects on behaviour.",
+      "To explore the concept of addiction as a brain-based disorder.",
+      "To complete an intervention focused on 'Addiction in the Brain'."
     ]
   ],
-  "2. Relapse Prevention & Harm Reduction": [
+  "1.2 Values & Beliefs": [
     [
-      "Action: To complete work on 'Relapse Prevention' to understand triggers, cravings, and management techniques.",
-      "Action: To develop a personal relapse prevention plan, identifying high-risk situations and coping strategies.",
-      "Action: To complete interventions focused on 'Triggers & Cravings' to learn what they are and how to respond."
-    ],
-    [
-      "Action: To complete work on 'Harm Reduction' to gain knowledge of ways to reduce risks of overdose, death, and health issues (BBVs, DVT).",
-      "Action: To discuss and implement harm reduction strategies relevant to the client's pattern of use.",
-      "Action: To increase knowledge of safer practices and harm minimisation."
-    ],
-    [
-      "Action: To complete 'Naloxone' training to increase overdose awareness and learn how to administer it safely.",
-      "Action: To discuss overdose prevention and offer Naloxone training and a kit upon release."
+      "To complete work on 'Values & Beliefs' to identify and connect with personal pro-social values.",
+      "To explore the client's core values and beliefs and how they can support recovery.",
+      "To complete an intervention focused on 'Values & Beliefs'."
     ]
   ],
-  "3. Substance-Specific Interventions": [
+  "1.3 Dishonesty & Addiction": [
     [
-      "Action: To complete psychoeducational work on 'Alcohol Awareness' and the risks of mixing with other substances.",
-      "Action: To explore the client's pattern of alcohol use and its impact on their physical and mental health."
-    ],
-    [
-      "Action: To complete psychoeducational work on 'Cannabis' to explore its effects and addictive qualities.",
-      "Action: To explore the client's beliefs about cannabis and its impact on motivation and mental health."
-    ],
-    [
-      "Action: To complete psychoeducational work on 'Crack/Cocaine' to increase knowledge of its effects on mood and health.",
-      "Action: To explore the risks of stimulant use, including its impact on finances, mental health, and offending."
-    ],
-    [
-      "Action: To complete psychoeducational work on 'Heroin / Opiates' to increase awareness of its dangers and risks.",
-      "Action: To discuss the risks of opiate use, including overdose, tolerance, and physical dependence."
-    ],
-    [
-      "Action: To complete psychoeducational work on 'Benzodiazepines' and the significant risks of dependence and overdose when mixed.",
-      "Action: To explore the client's use of benzodiazepines and the dangers of mixing with other depressants."
-    ],
-    [
-      "Action: To complete work on 'Cocaethylene' to understand the specific, toxic risks of mixing alcohol and cocaine.",
-      "Action: To raise awareness of the creation of cocaethylene in the body when mixing cocaine and alcohol."
-    ],
-    [
-      "Action: To complete psychoeducational work on 'Spice' (SCRAs) covering its unpredictable effects and severe health risks.",
-      "Action: To explore the client's use of Spice, focusing on harm reduction and the specific dangers within a prison environment.",
-      "Action: To raise awareness of the potentially life-threatening side effects associated with Synthetic Cannabinoids (Spice)."
-    ],
-    [
-      "Action: To complete psychoeducational work on illicit 'Subutex' (Buprenorphine) use, including risks of injection and overdose when mixed.",
-      "Action: To explore the client's pattern of illicit Subutex use and associated harm reduction strategies (BBVs, overdose).",
-      "Action: To discuss the dangers of diverted Buprenorphine and its interaction with other substances, particularly sedatives."
-    ],
-    [
-      "Action: To complete psychoeducational work on 'Pregabalin/Gabapentin' misuse, focusing on tolerance, dependence, and overdose risks, especially when mixed.",
-      "Action: To explore the client's use of Pregabalin/Gabapentin and the reasons behind it (e.g., self-medicating anxiety, enhancing other drugs).",
-      "Action: To raise awareness of withdrawal symptoms associated with Pregabalin/Gabapentin and the importance of medical support for cessation."
-    ],
-    [
-      "Action: To complete psychoeducational work on 'New Psychoactive Substances (NPS)' highlighting the unknown risks and unpredictable effects.",
-      "Action: To explore the client's experiences with NPS and the dangers of using substances with unknown purity or composition.",
-      "Action: To focus harm reduction strategies specifically on the dangers of NPS within the prison environment."
+      "To complete work on 'Dishonesty & Addiction' to understand its role in active addiction.",
+      "To explore the role of dishonesty within addiction and the importance of honesty in recovery."
     ]
   ],
-  "4. Motivation & Stages of Change": [
+  "1.4 Addiction Transfer": [
     [
-      "Action: To explore the client's motivation using scaling questions (Importance/Readiness/Confidence).",
-      "Action: To use decisional balance exercises to explore the pros and cons of substance use and change.",
-      "Action: To identify the client's current Stage of Change and tailor interventions accordingly."
-    ],
-    [
-      "Action: To build motivation for change using Motivational Interviewing techniques (OARS).",
-      "Action: To explore ambivalence about change in a non-confrontational manner.",
-      "Action: To identify and reinforce 'change talk' expressed by the client."
-    ],
-    [
-       "Action: To help the client identify personally meaningful goals that support their motivation for recovery.",
-       "Action: To link current substance use patterns to the client's stated values and future aspirations."
+      "To explore the issues around 'Addiction Transfer' and how best to respond.",
+      "To raise awareness of addiction transfer and develop strategies to manage it."
     ]
   ],
-  "5. Emotional & Cognitive Work": [
+  "2.1 Relapse Prevention Planning": [
     [
-      "Action: To complete work on 'Emotional Health' to learn how to manage emotional triggers.",
-      "Action: To develop healthier coping strategies for managing difficult emotions."
-    ],
-    [
-      "Action: To complete work on 'Anxiety' to understand its meaning and impact on recovery.",
-      "Action: To learn and practice techniques to manage feelings of anxiety without resorting to substance use."
-    ],
-    [
-      "Action: To complete work on 'Anger Management' to explore how anger affects the client and develop new responses.",
-      "Action: To identify anger triggers and learn de-escalation techniques."
-    ],
-    [
-      "Action: To complete work on 'Offending Behaviour' to explore the cycle of offending and substance misuse.",
-      "Action: To explore the links between the client's substance use and their offending behaviour."
-    ],
-    [
-      "Action: To complete work on 'Consequential Thinking' to improve decision-making and coping skills.",
-      "Action: To practice consequential thinking to better anticipate and avoid high-risk situations."
+      "To complete work on 'Relapse Prevention' to understand triggers, cravings, and management techniques.",
+      "To develop a personal relapse prevention plan, identifying high-risk situations and coping strategies.",
+      "To complete interventions focused on 'Triggers & Cravings' to learn what they are and how to respond."
     ]
   ],
-  "6. Practical & Pre-Release Actions": [
+  "2.2 Harm Reduction Strategies": [
     [
-      "Action: A community referral to be completed to ensure ongoing support from the local drug and alcohol service.",
-      "Action: To complete and send a community referral to the client's local treatment provider.",
-      "Action: To arrange a post-release handover with the community drug and alcohol team."
-    ],
-    [
-      "Action: A community referral to be completed to ensure continuation of a methadone/buprenorphine script upon release.",
-      "Action: To liaise with the community provider to ensure a seamless transition of the client's OST prescription."
-    ],
-    [
-      "Action: Client to be issued with an appointment letter and harm reduction information for their release.",
-      "Action: To complete a pre-release appointment to finalise release plans, issue appointments, and provide harm reduction advice."
-    ],
-    [
-      "Action: To complete work on 'Sleep Problems' to understand how to improve sleep in recovery.",
-      "Action: To explore and implement strategies for improving sleep hygiene."
+      "To complete work on 'Harm Reduction' to gain knowledge of ways to reduce risks of overdose, death, and health issues (BBVs, DVT).",
+      "To discuss and implement harm reduction strategies relevant to the client's pattern of use.",
+      "To increase knowledge of safer practices and harm minimisation."
     ]
   ],
-  "7. Staff Risk & Contingency Notes": [
+  "2.3 Naloxone / Overdose Awareness": [
     [
-      "Risk Note: Client's CNOMIS shows markers for violence. Wing staff to be made aware of times and locations of all appointments. Presentation to be monitored going forward.",
-      "Risk Note: Violence marker on CNOMIS noted. All appointments to be communicated to wing staff."
+      "To complete 'Naloxone' training to increase overdose awareness and learn how to administer it safely.",
+      "To discuss overdose prevention and offer Naloxone training and a kit upon release."
+    ]
+  ],
+  "3.1 Alcohol Awareness": [
+    [
+      "To complete psychoeducational work on 'Alcohol Awareness' and the risks of mixing with other substances.",
+      "To explore the client's pattern of alcohol use and its impact on their physical and mental health."
+    ]
+  ],
+  "3.2 Cannabis Risks": [
+    [
+      "To complete psychoeducational work on 'Cannabis' to explore its effects and addictive qualities.",
+      "To explore the client's beliefs about cannabis and its impact on motivation and mental health."
+    ]
+  ],
+  "3.3 Crack/Cocaine Risks": [
+    [
+      "To complete psychoeducational work on 'Crack/Cocaine' to increase knowledge of its effects on mood and health.",
+      "To explore the risks of stimulant use, including its impact on finances, mental health, and offending."
+    ]
+  ],
+  "3.4 Heroin / Opiate Risks": [
+    [
+      "To complete psychoeducational work on 'Heroin / Opiates' to increase awareness of its dangers and risks.",
+      "To discuss the risks of opiate use, including overdose, tolerance, and physical dependence."
+    ]
+  ],
+  "3.5 Benzodiazepine Risks": [
+    [
+      "To complete psychoeducational work on 'Benzodiazepines' and the significant risks of dependence and overdose when mixed.",
+      "To explore the client's use of benzodiazepines and the dangers of mixing with other depressants."
+    ]
+  ],
+  "3.6 Cocaethylene Risks (Cocaine+Alcohol)": [
+    [
+      "To complete work on 'Cocaethylene' to understand the specific, toxic risks of mixing alcohol and cocaine.",
+      "To raise awareness of the creation of cocaethylene in the body when mixing cocaine and alcohol."
+    ]
+  ],
+  "3.7 Spice (SCRAs) Risks": [
+    [
+      "To complete psychoeducational work on 'Spice' (SCRAs) covering its unpredictable effects and severe health risks.",
+      "To explore the client's use of Spice, focusing on harm reduction and the specific dangers within a prison environment.",
+      "To raise awareness of the potentially life-threatening side effects associated with Synthetic Cannabinoids (Spice)."
+    ]
+  ],
+  "3.8 Illicit Subutex (Buprenorphine) Risks": [
+    [
+      "To complete psychoeducational work on illicit 'Subutex' (Buprenorphine) use, including risks of injection and overdose when mixed.",
+      "To explore the client's pattern of illicit Subutex use and associated harm reduction strategies (BBVs, overdose).",
+      "To discuss the dangers of diverted Buprenorphine and its interaction with other substances, particularly sedatives."
+    ]
+  ],
+  "3.9 Pregabalin/Gabapentin Misuse Risks": [
+    [
+      "To complete psychoeducational work on 'Pregabalin/Gabapentin' misuse, focusing on tolerance, dependence, and overdose risks, especially when mixed.",
+      "To explore the client's use of Pregabalin/Gabapentin and the reasons behind it (e.g., self-medicating anxiety, enhancing other drugs).",
+      "To raise awareness of withdrawal symptoms associated with Pregabalin/Gabapentin and the importance of medical support for cessation."
+    ]
+  ],
+  "3.10 New Psychoactive Substances (NPS) Risks": [
+    [
+      "To complete psychoeducational work on 'New Psychoactive Substances (NPS)' highlighting the unknown risks and unpredictable effects.",
+      "To explore the client's experiences with NPS and the dangers of using substances with unknown purity or composition.",
+      "To focus harm reduction strategies specifically on the dangers of NPS within the prison environment."
+    ]
+  ],
+   "4.1 Motivation & Stages of Change": [
+    [
+      "To explore the client's motivation using scaling questions (Importance/Readiness/Confidence).",
+      "To use decisional balance exercises to explore the pros and cons of substance use and change.",
+      "To identify the client's current Stage of Change and tailor interventions accordingly."
     ],
     [
-      "Risk Note: Client may present in an unpredictable manner if under the influence of illicit substances. Monitor presentation and raise concerns with clinical team and wing staff as necessary.",
-      "Risk Note: Potential for unpredictable behaviour if under the influence. Will monitor presentation and liaise with wing/clinical staff if concerned."
+      "To build motivation for change using Motivational Interviewing techniques (OARS).",
+      "To explore ambivalence about change in a non-confrontational manner.",
+      "To identify and reinforce 'change talk' expressed by the client."
     ],
     [
-      "Contingency Plan: Client and I have agreed that should he refuse an appointment or wish to withdraw from service, I will contact him within 14 days to attempt to re-engage him or plan exit from treatment.",
-      "Contingency Plan: Standard 14-day follow-up to be attempted if client disengages or wishes to withdraw."
+       "To help the client identify personally meaningful goals that support their motivation for recovery.",
+       "To link current substance use patterns to the client's stated values and future aspirations."
+    ]
+  ],
+  "5.1 Emotional Health & Coping": [
+    [
+      "To complete work on 'Emotional Health' to learn how to manage emotional triggers.",
+      "To develop healthier coping strategies for managing difficult emotions."
+    ]
+  ],
+   "5.2 Anxiety Management": [
+     [
+       "To complete work on 'Anxiety' to understand its meaning and impact on recovery.",
+       "To learn and practice techniques to manage feelings of anxiety without resorting to substance use."
+    ]
+  ],
+   "5.3 Anger Management": [
+     [
+      "To complete work on 'Anger Management' to explore how anger affects the client and develop new responses.",
+      "To identify anger triggers and learn de-escalation techniques."
+    ]
+  ],
+  "5.4 Offending Behaviour Links": [
+    [
+      "To complete work on 'Offending Behaviour' to explore the cycle of offending and substance misuse.",
+      "To explore the links between the client's substance use and their offending behaviour."
+    ]
+  ],
+  "5.5 Consequential Thinking": [
+    [
+      "To complete work on 'Consequential Thinking' to improve decision-making and coping skills.",
+      "To practice consequential thinking to better anticipate and avoid high-risk situations."
+    ]
+  ],
+  "6.1 Community D&A Referral": [
+    [
+      "A community referral to be completed to ensure ongoing support from the local drug and alcohol service.",
+      "To complete and send a community referral to the client's local treatment provider.",
+      "To arrange a post-release handover with the community drug and alcohol team."
+    ]
+  ],
+  "6.2 Community OST Referral": [
+    [
+      "A community referral to be completed to ensure continuation of a methadone/buprenorphine script upon release.",
+      "To liaise with the community provider to ensure a seamless transition of the client's OST prescription."
+    ]
+  ],
+  "6.3 Release Appointments & Info": [
+    [
+      "Client to be issued with an appointment letter and harm reduction information for their release.",
+      "To complete a pre-release appointment to finalise release plans, issue appointments, and provide harm reduction advice."
+    ]
+  ],
+  "6.4 Sleep Hygiene": [
+    [
+      "To complete work on 'Sleep Problems' to understand how to improve sleep in recovery.",
+      "To explore and implement strategies for improving sleep hygiene."
+    ]
+  ],
+  "7.1 Staff Note: Violence Risk": [
+    [
+      "Client's CNOMIS shows markers for violence. Wing staff to be made aware of times and locations of all appointments. Presentation to be monitored going forward.",
+      "Violence marker on CNOMIS noted. All appointments to be communicated to wing staff."
+    ]
+  ],
+  "7.2 Staff Note: Illicit Substance Risk": [
+    [
+      "Client may present in an unpredictable manner if under the influence of illicit substances. Monitor presentation and raise concerns with clinical team and wing staff as necessary.",
+      "Potential for unpredictable behaviour if under the influence. Will monitor presentation and liaise with wing/clinical staff if concerned."
+    ]
+  ],
+  "7.3 Staff Note: Contingency Plan": [
+    [
+      "Client and I have agreed that should he refuse an appointment or wish to withdraw from service, I will contact him within 14 days to attempt to re-engage him or plan exit from treatment.",
+      "Standard 14-day follow-up to be attempted if client disengages or wishes to withdraw."
     ]
   ]
 }
+
